@@ -29,6 +29,7 @@ async function getAccessToken() {
 // Express middleware setup
 app.use(cors()); // Use cors middleware
 app.use(express.static('public')); // Serve static files from 'public' folder
+app.use(express.json()); // Parse JSON bodies
 
 // Routes
 app.get('/token', async (req, res) => {
@@ -43,6 +44,11 @@ app.get('/token', async (req, res) => {
 
 app.get('/mockData', (req, res) => {
     res.sendFile(path.join(__dirname, 'mockData.json'));
+});
+
+// POST request at /
+app.post('/', (req, res) => {
+    res.send('Pins in Sync is Running');
 });
 
 // Swagger UI setup
