@@ -7,9 +7,7 @@
         }
     ],
     "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "/"
-        }
+        { "src": "/token", "dest": "./index.js" },
+        { "src": "/mockData", "dest": "./index.js" }
     ]
 }
