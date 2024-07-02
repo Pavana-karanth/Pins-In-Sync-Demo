@@ -44,7 +44,10 @@ app.get('/token', async (req, res) => {
 app.get('/mockData', (req, res) => {
     res.sendFile(path.join(__dirname, 'mockData.json'));
 });
-
+// POST request at /
+app.post('/', (req, res) => {
+    res.send('Pins in Sync is Running');
+});
 // Swagger UI setup
 const swaggerDocument = require('./swagger-output.json');
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
