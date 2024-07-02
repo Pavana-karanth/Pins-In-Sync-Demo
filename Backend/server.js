@@ -28,6 +28,10 @@ async function getAccessToken() {
 
 app.use(cors()); // Use cors middleware
 
+app.get('/', (req, res) => {
+    res.send('Pins in Sync is Running');
+});
+
 app.get('/token', async (req, res) => {
     try {
         const token = await getAccessToken();
@@ -51,4 +55,3 @@ app.listen(PORT, () => {
 
 // Swagger setup
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-module.exports = app;
