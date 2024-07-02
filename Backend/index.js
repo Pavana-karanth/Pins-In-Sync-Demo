@@ -1,9 +1,9 @@
-import fetch from 'node-fetch';
-import express from 'express';
-import path from 'path';
-import swaggerUi from 'swagger-ui-express';
-import cors from 'cors';
-import dotenv from 'dotenv';
+const fetch = require('node-fetch');
+const express = require('express');
+const path = require('path');
+const swaggerUi = require('swagger-ui-express');
+const cors = require('cors');
+const dotenv = require('dotenv');
 
 dotenv.config();
 
@@ -46,7 +46,7 @@ app.get('/mockData', (req, res) => {
 });
 
 // Swagger UI setup
-import swaggerDocument from './swagger-output.json';
+const swaggerDocument = require('./swagger-output.json');
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Server start
