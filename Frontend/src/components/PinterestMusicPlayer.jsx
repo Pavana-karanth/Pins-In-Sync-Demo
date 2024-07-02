@@ -11,7 +11,7 @@ const moodPlaylists = {
 };
 
 const fetchMockData = async () => {
-    const response = await fetch('http://localhost:8000/mockData');
+    const response = await fetch(import.meta.env.VITE_MOCK_DATA_URL);
     if (!response.ok) {
         throw new Error('Network response was not ok');
     }
