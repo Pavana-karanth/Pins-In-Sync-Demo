@@ -1,16 +1,15 @@
 {
     "version": 2,
     "builds": [
-      {
-        "src": "swagger.js",
-        "use": "@vercel/node"
-      }
+        {
+            "src": "./index.js",
+            "use": "@vercel/node"
+        }
     ],
     "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/swagger.js"
-      }
+        {
+            "src": "/(.*)",
+            "dest": "/"
+        }
     ]
-  }
-  
+}
