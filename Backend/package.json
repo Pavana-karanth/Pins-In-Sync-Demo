@@ -15,7 +15,8 @@
     "express": "^4.19.2",  
     "node-fetch": "^2.7.0",
     "path": "*",
-    "swagger-ui-express": "^5.0.1"
+    "swagger-ui-express": "^5.0.1",
+    "swagger-autogen": "^2.23.7"
   },
   "devDependencies": {}
 }
