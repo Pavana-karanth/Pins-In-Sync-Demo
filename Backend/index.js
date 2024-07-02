@@ -10,7 +10,7 @@ const doc = {
 };
 
 const outputFile = './swagger-output.json';
-const endpointsFiles = ['./server.js'];
+const endpointsFiles = ['./Backend/server.js'];
 
 swaggerAutogen(outputFile, endpointsFiles, doc).then(() => {
     require('./server'); // Your project's root file
