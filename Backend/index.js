@@ -2,9 +2,9 @@ const fetch = require('node-fetch');
 const express = require('express');
 const path = require('path');
 const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger-output.json');
 const cors = require('cors');
 const dotenv = require('dotenv');
-
 dotenv.config();
 
 const app = express();
@@ -26,11 +26,8 @@ async function getAccessToken() {
     return data.access_token;
 }
 
-// Express middleware setup
 app.use(cors()); // Use cors middleware
-app.use(express.static('public')); // Serve static files from 'public' folder
 
-// Routes
 app.get('/token', async (req, res) => {
     try {
         const token = await getAccessToken();
@@ -41,19 +38,16 @@ app.get('/token', async (req, res) => {
     }
 });
 
+app.use(express.static('public'));
+
 app.get('/mockData', (req, res) => {
     res.sendFile(path.join(__dirname, 'mockData.json'));
 });
-// POST request at /
-app.post('/', (req, res) => {
-    res.send('Pins in Sync is Running');
-});
-// Swagger UI setup
-const swaggerDocument = require('./swagger-output.json');
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-// Server start
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
+// Swagger setup
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
