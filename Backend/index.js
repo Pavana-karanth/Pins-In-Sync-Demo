@@ -4,7 +4,6 @@ const path = require('path');
 const swaggerUi = require('swagger-ui-express');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const swaggerAutogen = require('swagger-autogen')();
 
 dotenv.config();
 
@@ -26,23 +25,6 @@ async function getAccessToken() {
     const data = await response.json();
     return data.access_token;
 }
-
-// Swagger configuration
-const doc = {
-    info: {
-        title: 'Express API',
-        description: 'API documentation'
-    },
-    host: 'localhost:8000',
-    schemes: ['http'],
-};
-
-const outputFile = './swagger-output.json';
-const endpointsFiles = [__filename]; // Reference to this file
-
-swaggerAutogen(outputFile, endpointsFiles, doc).then(() => {
-    console.log('Swagger JSON file generated');
-});
 
 // Express middleware setup
 app.use(cors()); // Use cors middleware
